@@ -65,6 +65,7 @@
                 if (classList[x] === letter) {
                     activePhrasesHTML[i].classList.remove('hide');
                     activePhrasesHTML[i].className = 'show';
+                    //$('.show').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0}, 1000);
                 }
             }
         }

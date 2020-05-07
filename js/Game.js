@@ -36,6 +36,30 @@
     // * Begins game by selecting a random phrase and displaying it to user
     // */
     startGame() {
+        this.missed = 0;
+        this.activePhrase = null;
+        const li = document.querySelectorAll('ul li');
+        const ul = document.querySelector('.section ul');
+        $("h3").css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0}, 3000);
+        for (let i = 0; i< li.length; i++) {
+            ul.removeChild(li[i]);
+        }
+        const buttons = document.querySelectorAll('.keyrow button');
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].className === 'wrong') {
+                buttons[i].classList.remove('wrong');
+                buttons[i].className = 'key';
+            } else if (buttons[i].className === 'chosen') {
+                buttons[i].classList.remove('chosen');
+                buttons[i].className = 'key';
+            }
+        }
+        const heartLi = document.querySelectorAll('[src="images/lostHeart.png"]');
+        for (let i = 0; i < heartLi.length; i++) {
+            heartLi[i].src = "images/liveHeart.png";
+        }
+        $('[src="images/liveHeart.png"]').fadeIn(3000);
+
         const overlay = document.getElementById('overlay');
         overlay.style.display = 'none';
         const randomPhrase = game.getRandomPhrase();
@@ -71,6 +95,7 @@
     removeLife() {
         this.missed += 1;
         const li = document.querySelector('[src="images/liveHeart.png"]');
+        $('[src="images/liveHeart.png"]').first().fadeOut(1000);
         li.src = "images/lostHeart.png";
         if (this.missed >= 5) {
             game.gameOver(false);
@@ -97,6 +122,25 @@
     * @param (HTMLButtonElement) button - The clicked button element
     */
     handleInteraction(button) {
-        console.log(button);
+        button.classList.remove('key');
+        let noLetterMatchCount = 0;
+        for (let i = 0; i < this.activePhrase.phrase.length; i++) {
+            if (button.textContent === this.activePhrase.phrase[i]) {
+                this.activePhrase.showMatchedLetter(button.textContent);
+                this.checkForWin();
+                button.className = 'chosen';
+                if (this.checkForWin() === true) {
+                    this.gameOver(true);
+                }
+            } else if (button.textContent !== this.activePhrase.phrase[i]) {
+                noLetterMatchCount += 1;
+            }
+            if (noLetterMatchCount === this.activePhrase.phrase.length) {
+                button.className = 'wrong';
+                game.removeLife();
+            }
+        }
     };
- }
+
+
+}

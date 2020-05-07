@@ -86,7 +86,12 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #445069;
+  font-size: 40px;
+}
+
+.header span {
+  color: #78CF82;
 }
 
 
@@ -201,4 +206,8 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+#subtitle {
+  color: #78CF82;
 }
