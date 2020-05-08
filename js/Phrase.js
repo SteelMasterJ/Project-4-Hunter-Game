@@ -15,10 +15,11 @@
         const chosenPhrase = this.phrase;
         const phraseArray = chosenPhrase.split('');
         let ul = document.querySelector('.section ul');
+        //forEach to add each letter to an empty letterArray
         phraseArray.forEach(letter=> {
             letterArray.push(letter);
         });
-
+        //for loop to push each letter into the phrase ul as and li, either with a space class or as a hidden letter
         for (let i = 0; i < letterArray.length; i++) {
             if(letterArray[i] === ' ') {
                 const space = document.createElement('li');
@@ -65,7 +66,6 @@
                 if (classList[x] === letter) {
                     activePhrasesHTML[i].classList.remove('hide');
                     activePhrasesHTML[i].className = 'show';
-                    //$('.show').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0}, 1000);
                 }
             }
         }

@@ -10,4 +10,10 @@ https://en.wikipedia.org/wiki/Gamehendge
 
 https://www.youtube.com/watch?v=3HoDlGNTisI
 
-I am going for the 'exceeds' grade, and beyond the 'Gamehendge' theme I've gone for i have also added some jQuery styling to the inital load page as well as I've added some fade animations to the heart images, along with some minor CSS changes and additions.
+I am going for the 'exceeds' grade, and beyond the 'Gamehendge' theme I've gone for I have also added some jQuery styling, along with some minor CSS changes and additions.
+    
+    Styling Changes include:
+    -jQuery to fade in the "Gamehendge Edition" text on the initial start screen.
+    -jQuery to fade in the "Gamehendge Edition" text on load of the game screen.
+    -jQuery to fade out and remove any lost hearts during gameplay.
+    -CSS to give color to the subtitle id

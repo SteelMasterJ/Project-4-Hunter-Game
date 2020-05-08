@@ -2,9 +2,6 @@
  * Project 4 - OOP Game App
  * app.js */
 
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
 const game = new Game();
 const button = document.getElementById('btn__reset');
@@ -13,8 +10,11 @@ let buttonElement;
 
 button.addEventListener('click', (e) => {
     game.startGame();
+    //jquery to fade in the 'gamehendge edition' text on the game screen
+    $("span").css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0}, 3000);
 });
 
+//click event listener
 keyDiv.addEventListener('click', (e) => {
     if (e.target.className === "key") {
         game.handleInteraction(e.target);
@@ -22,7 +22,7 @@ keyDiv.addEventListener('click', (e) => {
 });
 
 
-
+//key event listener
 document.addEventListener('keydown', (e) => {
     if (/\w/ig.test(e.key)) {
         const keyButtons = document.querySelectorAll('.keyrow .key');
@@ -35,13 +35,8 @@ document.addEventListener('keydown', (e) => {
             game.handleInteraction(buttonElement);
         }
     }
-    console.log(e.key);
+    //console.log(e.key);
 });
 
-// $(".title").hide();
-// $("#subtitle").hide();
-// $(".title").fadeIn(2000);
-// $("#subtitle").delay(1500).fadeIn(2000);
-
-// $("#subtitle").css("visibility", "hidden");
+//jquery to fade in the 'gamehendge edition' text on the start screen
 $("#subtitle").css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0}, 4000);
